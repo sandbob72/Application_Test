@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <RelativeLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <android.support.v7.widget.Toolbar
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:background="@color/colorYellow"
+                    android:elevation="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageButton
+                        android:id="@+id/arrow_back"
+                        android:src="@drawable/arrow_left"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="7dp"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorYellow"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ยางรถยนต์"
+                        android:textSize="20dp"
+                        android:textColor="@color/colorWhite"
+                        android:layout_gravity="center"
+                        android:id="@+id/toolbar_title" />
+
+            </android.support.v7.widget.Toolbar>
+        </RelativeLayout>
+        <LinearLayout
+                android:id="@+id/bottom1"
+                android:layout_below="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal" >
+            <LinearLayout
+                    android:id="@+id/b1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                <TextView
+                        android:layout_margin="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:drawableLeft="@drawable/filter"
+                        android:background="@color/colorWhite"
+                        android:text="กรอง"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="26dp"
+                    android:background="@color/colorWhite"
+                    android:gravity="center"
+                    android:backgroundTint="@color/colorDarkgray"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal" />
+
+            <LinearLayout
+                    android:id="@+id/b2"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:layout_margin="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:drawableLeft="@drawable/sort"
+                        android:background="@color/colorWhite"
+                        android:text="เรียงตาม"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_below="@+id/toolbar"
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="49dp"
+                android:background="@color/colorDarkgray"
+                android:gravity="center"
+                android:orientation="horizontal" />
+        <ScrollView
+                android:layout_below="@+id/bottom1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycleProduct"
+                        android:background="@color/colorWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="57dp"/>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</RelativeLayout>

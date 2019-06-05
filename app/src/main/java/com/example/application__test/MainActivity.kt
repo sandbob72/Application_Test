@@ -1,5 +1,6 @@
 package com.example.application__test
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -10,10 +11,7 @@ import android.support.v7.widget.RecyclerView
 import android.text.Html
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterViewFlipper
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.ViewFlipper
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.ParsePosition
 
@@ -99,6 +97,31 @@ class MainActivity : AppCompatActivity() {
         })
         //---------------------------------------------------------------------------------//
 
+        //ImageButton to CategoryActivity---------------------------------------------------------//
+        val btnOpenCategory1 = findViewById(R.id.category1) as ImageButton
+        btnOpenCategory1.setOnClickListener(){
+            val intent = Intent(this@MainActivity,  CategoryActivity :: class.java)
+            startActivity(intent)
+        }
+
+        val btnOpenCategory2 = findViewById(R.id.category2) as ImageButton
+        btnOpenCategory2.setOnClickListener(){
+            val intent = Intent(this@MainActivity,  CategoryActivity :: class.java)
+            startActivity(intent)
+        }
+
+        val btnOpenCategory3 = findViewById(R.id.category3) as ImageButton
+        btnOpenCategory3.setOnClickListener(){
+            val intent = Intent(this@MainActivity,  CategoryActivity :: class.java)
+            startActivity(intent)
+        }
+
+        val btnOpenCategory4 = findViewById(R.id.category4) as ImageButton
+        btnOpenCategory4.setOnClickListener(){
+            val intent = Intent(this@MainActivity,  CategoryActivity :: class.java)
+            startActivity(intent)
+        }
+        //ImageButton to CategoryActivity---------------------------------------------------------//
 
     }
 
