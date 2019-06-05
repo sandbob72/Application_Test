@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     val image = arrayOf(R.drawable.ads_home1, R.drawable.ads_home2, R.drawable.ads_home3, R.drawable.ads_home4)
 
     var listNumber = 20
+    val listname = arrayOf("A","B","C","D","E")
+    val listsize = arrayOf("S","M","L","XL","XXL")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
