@@ -14,12 +14,12 @@ class RecyclerViewAdapter (private  val context: Context, val activity: MainActi
         return NumberViewHolder(LayoutInflater.from(activity).inflate(R.layout.row_main, p0 ,false))
     }
     override fun getItemCount(): Int {
-        return activity.listname.size
+        return activity.listNumber
     }
 
     override fun onBindViewHolder(p0: NumberViewHolder, p1 : Int){
-        p0.text1.text = "ยี่ห้อ ${activity.listname[p1]}"
-        p0.text2.text = "ขนาด ${activity.listsize[p1]}"
+        p0.text1.text = "ยี่ห้อ BFGoodrich"
+        p0.text2.text = "ขนาด 215/45 R17 91V"
         p0.text3.text = "รุ่น Advantage T/A Drive"
         p0.text4.text = "จำนวนคงเหลือ 100"
         p0.text5.text = "4,090.-"

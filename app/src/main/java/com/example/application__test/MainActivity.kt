@@ -2,9 +2,11 @@ package com.example.application__test
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.text.Html
 import android.view.View
 import android.view.ViewGroup
@@ -24,9 +26,13 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewFlipper: ViewFlipper
     val image = arrayOf(R.drawable.ads_home1, R.drawable.ads_home2, R.drawable.ads_home3, R.drawable.ads_home4)
 
-    var listNumber = 20
-    val listname = arrayOf("A","B","C","D","E")
-    val listsize = arrayOf("S","M","L","XL","XXL")
+    var listNumber = 0
+    var page = 0
+    var isLoading = false
+    var limit = 10
+
+    lateinit var adapter: RecyclerViewAdapter
+    lateinit var layoutManager: LinearLayoutManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,8 +75,30 @@ class MainActivity : AppCompatActivity() {
         //---------------------------------------------------------------------------------//
 
 
-        recycleProduct.layoutManager = LinearLayoutManager(this)
-        recycleProduct.adapter = RecyclerViewAdapter(this,this)
+        //RecyclerView : LoadMore----------------------------------------------------------//
+        layoutManager = LinearLayoutManager(this)
+        recycleProduct.layoutManager = layoutManager
+        getPage()
+
+        recycleProduct.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val visibleItemCount = layoutManager.childCount
+                val pastVisibleItem = layoutManager.findFirstCompletelyVisibleItemPosition()
+                val total = adapter.itemCount
+
+                if (!isLoading)
+                {
+                    if ((visibleItemCount + pastVisibleItem) >= total)
+                    {
+                        page++
+                        getPage()
+                    }
+                }
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
+        //---------------------------------------------------------------------------------//
+
 
     }
 
@@ -114,4 +142,34 @@ class MainActivity : AppCompatActivity() {
         viewFlipper.setOutAnimation(this, android.R.anim.slide_out_right)
     }
     //ViewFlipper : Auto Slider Image-------------------------------------------------------------------------//
+
+
+    //RecycleView : LoadMore----------------------------------------------------------------------------------//
+    fun getPage()
+    {
+        isLoading = true
+        progressBar.visibility = View.VISIBLE
+        val start = ((page)*limit)+1
+        val end = (page+1) * limit
+
+        for (i in start..end)
+        {
+            listNumber++
+        }
+
+        Handler() .postDelayed({
+            if (::adapter.isInitialized){
+                adapter.notifyDataSetChanged()
+            }
+            else
+            {
+                adapter = RecyclerViewAdapter(this,this)
+                recycleProduct.adapter = adapter
+            }
+            isLoading =false
+            progressBar.visibility = View.GONE
+        },3000)
+    }
+    //RecycleView : LoadMore----------------------------------------------------------------------------------//
+
 }
