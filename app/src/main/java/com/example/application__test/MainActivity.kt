@@ -7,8 +7,10 @@ import android.support.v4.view.ViewPager
 import android.text.Html
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterViewFlipper
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ViewFlipper
 import java.text.ParsePosition
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +18,10 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var viewPager: ViewPager
     lateinit var dotsLayout: LinearLayout
     lateinit var dots: Array<ImageView>
+
+    lateinit var viewFlipper: ViewFlipper
+    val image = arrayOf(R.drawable.ads_home1, R.drawable.ads_home2, R.drawable.ads_home3, R.drawable.ads_home4)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = ViewPageAdapter(this)
         //---------------------------------------------------------------
 
+        //ViewPage: Add Indicator---------------------------------------------------------
         dotsLayout = findViewById(R.id.dotsLayout) as LinearLayout
         createDots(0)
 
@@ -43,7 +50,13 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+        //---------------------------------------------------------------------------------
 
+        viewFlipper = findViewById(R.id.ads_home)
+        for (i in 0 until image.size)
+        {
+            flip_image(image[i])
+        }
 
 
     }
@@ -71,5 +84,16 @@ class MainActivity : AppCompatActivity() {
             dotsLayout.addView(dots[i],params)
 
         }
+    }
+
+    fun flip_image(i : Int)
+    {
+        val view = ImageView(this)
+        view.setBackgroundResource(i)
+        viewFlipper.addView(view)
+        viewFlipper.setFlipInterval(3000)
+        viewFlipper.isAutoStart = true
+        viewFlipper.setInAnimation(this, android.R.anim.slide_in_left)
+        viewFlipper.setOutAnimation(this, android.R.anim.slide_out_right)
     }
 }
