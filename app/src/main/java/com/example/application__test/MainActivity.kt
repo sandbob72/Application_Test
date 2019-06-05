@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Html
@@ -122,6 +123,35 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         //ImageButton to CategoryActivity---------------------------------------------------------//
+
+
+        //AlertDialog-----------------------------------------------------------------//
+        layout1.setOnClickListener(){
+            val mAlertDialog = AlertDialog.Builder(this@MainActivity)
+            mAlertDialog.setMessage("กดค้นหา")
+            mAlertDialog.setPositiveButton("OK"){
+                    dialog, which ->
+                //Toast.makeText(this@MainActivity, "กดค้นหา", Toast.LENGTH_SHORT).show()
+            }
+            mAlertDialog.show()
+        }
+        button_1.setOnClickListener(){
+            val mAlertDialog = AlertDialog.Builder(this@MainActivity)
+            mAlertDialog.setMessage("กดเสนอซื้อสินค้า")
+            mAlertDialog.setPositiveButton("OK"){
+                    dialog, which ->
+            }
+            mAlertDialog.show()
+        }
+        button_2.setOnClickListener(){
+            val mAlertDialog = AlertDialog.Builder(this@MainActivity)
+            mAlertDialog.setMessage("กดเสนอขายสินค้า")
+            mAlertDialog.setPositiveButton("OK"){
+                    dialog, which ->
+            }
+            mAlertDialog.show()
+        }
+        //AlertDialog-----------------------------------------------------------------//
 
     }
 
