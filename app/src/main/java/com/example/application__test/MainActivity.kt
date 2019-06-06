@@ -1,6 +1,8 @@
 package com.example.application__test
 
+import android.app.Activity
 import android.content.Intent
+import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -14,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
+import com.example.application__test.databinding.ActivityMainBinding
 import java.text.ParsePosition
 
 class MainActivity : AppCompatActivity() {
@@ -36,7 +39,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.products = MainTextModel("สินค้าที่มีการซื้อ/ขายล่าสุด","เสนอซื้อสินค้า","เสนอขายสินค้า","ค้นหา","ยางรถยนต์",
+            "ส่วนบุคคล/SUV","ยางรถกระบะ", "/รถตู้", "ยางรถบรรทุก", "6 ล้อ", "ยางรถบรรทุก", "10 ล้อ")
 
         //ViewPage-------------------------------------------------------//
         viewPager = findViewById<View>(R.id.banner) as ViewPager
@@ -99,34 +104,23 @@ class MainActivity : AppCompatActivity() {
         //---------------------------------------------------------------------------------//
 
         //ImageButton to CategoryActivity---------------------------------------------------------//
-        val btnOpenCategory1 = findViewById(R.id.category1) as ImageButton
-        btnOpenCategory1.setOnClickListener(){
-            val intent = Intent(this@MainActivity,  CategoryActivity :: class.java)
-            startActivity(intent)
+        binding.category1.setOnClickListener{
+            startActivity(Intent(this@MainActivity, CategoryActivity :: class.java))
         }
-
-        val btnOpenCategory2 = findViewById(R.id.category2) as ImageButton
-        btnOpenCategory2.setOnClickListener(){
-            val intent = Intent(this@MainActivity,  CategoryActivity :: class.java)
-            startActivity(intent)
+        binding.category2.setOnClickListener{
+            startActivity(Intent(this@MainActivity, CategoryActivity :: class.java))
         }
-
-        val btnOpenCategory3 = findViewById(R.id.category3) as ImageButton
-        btnOpenCategory3.setOnClickListener(){
-            val intent = Intent(this@MainActivity,  CategoryActivity :: class.java)
-            startActivity(intent)
+        binding.category3.setOnClickListener{
+            startActivity(Intent(this@MainActivity, CategoryActivity :: class.java))
         }
-
-        val btnOpenCategory4 = findViewById(R.id.category4) as ImageButton
-        btnOpenCategory4.setOnClickListener(){
-            val intent = Intent(this@MainActivity,  CategoryActivity :: class.java)
-            startActivity(intent)
+        binding.category4.setOnClickListener{
+            startActivity(Intent(this@MainActivity, CategoryActivity :: class.java))
         }
         //ImageButton to CategoryActivity---------------------------------------------------------//
 
 
         //AlertDialog-----------------------------------------------------------------//
-        layout1.setOnClickListener(){
+        binding.layout1.setOnClickListener(){
             val mAlertDialog = AlertDialog.Builder(this@MainActivity)
             mAlertDialog.setMessage("กดค้นหา")
             mAlertDialog.setPositiveButton("OK"){

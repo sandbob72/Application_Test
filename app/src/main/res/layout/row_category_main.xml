@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
         xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+                name="dataRowCategory"
+                type="com.example.application__test.RowCategoryTextModel"/>
+    </data>
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -30,7 +33,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:textColor="@color/colorMediumblue"
-                        android:text="T1"/>
+                        android:text="@{dataRowCategory.brand}"/>
                 <TextView
                         android:id="@+id/text2"
                         android:layout_width="wrap_content"
@@ -40,7 +43,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:textColor="@color/colorBlack"
-                        android:text="T2"/>
+                        android:text="@{dataRowCategory.size}"/>
                 <TextView
                         android:id="@+id/text3"
                         android:layout_width="wrap_content"
@@ -50,7 +53,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:textColor="@color/colorBlack"
-                        android:text="T3"/>
+                        android:text="@{dataRowCategory.generation}"/>
                 <TextView
                         android:id="@+id/text4"
                         android:layout_width="wrap_content"
@@ -59,7 +62,7 @@
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:text="T4"/>
+                        android:text="@{dataRowCategory.number}"/>
             </LinearLayout>
 
             <LinearLayout
@@ -78,7 +81,7 @@
                         android:layout_marginRight="70dp"
                         android:textSize="20dp"
                         android:textColor="@color/colorRed"
-                        android:text="T5"/>
+                        android:text="@{dataRowCategory.price}"/>
                 <Button
                         android:text="Button"
                         android:background="@drawable/btn1"
@@ -102,4 +105,4 @@
                 android:layout_marginTop="109dp"/>
     </RelativeLayout>
 
-</RelativeLayout>
+</layout>

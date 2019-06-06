@@ -1,5 +1,7 @@
 package com.example.application__test
 
+import android.content.Intent
+import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -7,6 +9,7 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.example.application__test.databinding.ActivityCategoryBinding
 import kotlinx.android.synthetic.main.activity_category.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.progressBar
@@ -24,7 +27,8 @@ class CategoryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_category)
+        val binding: ActivityCategoryBinding = DataBindingUtil.setContentView(this, R.layout.activity_category)
+        binding.dataCategory = CategoryTextModel("ยางรถยนต์","กรอง","เรียงตาม")
 
 
         //RecyclerView : LoadMore-----------------------------------------------------------------------//
@@ -69,6 +73,11 @@ class CategoryActivity : AppCompatActivity() {
             mAlertDialog.show()
         }
         //AlertDialog-----------------------------------------------------------------//
+
+        binding.arrowBack.setOnClickListener{
+            val intent = Intent(this@CategoryActivity ,MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
